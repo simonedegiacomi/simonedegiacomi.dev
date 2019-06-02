@@ -1,0 +1,22 @@
+div.editor {
+    width: 90vw;
+    height: 90vh;
+
+    margin: auto;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+
+    background-color: var(--editorBackgroundColor);
+    box-shadow: 0 0 15px 2px black;
+    border-radius: 5px;
+}
+
+
+div.editor-body {
+    display: flex;
+
+    flex-grow: 1;
+}
