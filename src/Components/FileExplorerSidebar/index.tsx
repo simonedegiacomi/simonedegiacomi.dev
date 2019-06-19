@@ -1,17 +1,34 @@
-import React, {Component} from "react";
+import React, {Component, ReactNode} from "react";
 
 import "./FileExplorerSidebar.css";
+import File from "../../Models/File";
+import Folder from "../../Models/Folder";
+import {FolderComponent} from "./FolderComponent";
 
-export default class FileExplorerSidebar extends Component {
+export default class FileExplorerSidebar extends Component<FileExplorerSidebarProps> {
 
-    render(): React.ReactNode {
+    render(): ReactNode {
+        const {root, onOpenFile} = this.props;
         return (
             <div className="file-explorer-sidebar">
-                <ul>
-                    <li>Folder</li>
-                    <li>File.md</li>
-                </ul>
+                {
+                    !root &&
+                    <p>Please wait</p>
+                }
+
+                {
+                    root &&
+                    <FolderComponent folder={root} onOpenFile={onOpenFile}/>
+                }
             </div>
-        )
+        );
     }
 }
+
+interface FileExplorerSidebarProps {
+    root: Folder | null,
+    currentFile: File | null,
+    onOpenFile: (fileToOpen: File) => void
+}
+
+

@@ -1,5 +1,26 @@
 [
-  "Projects/GSoC/First period.md",
-  "Projects/Portfolio.md",
-  "About me.md"
+  {
+    "name": "Projects",
+    "type": "folder",
+    "content": [
+      {
+        "name": "GSoC",
+        "type": "folder",
+        "content": [
+          {
+            "name": "First period.md",
+            "type": "file"
+          }
+        ]
+      },
+      {
+        "name": "Portfolio.md",
+        "type": "file"
+      }
+    ]
+  },
+  {
+    "name": "About me.md",
+    "type": "file"
+  }
 ]
