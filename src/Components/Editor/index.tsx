@@ -43,6 +43,7 @@ export default class Editor extends Component<any, EditorState> {
     }
 
     handleOpenFile = (fileToOpen: File) => {
+        console.log('handleOpenFile()', fileToOpen);
         this.setState({
            openedFiles: [...this.state.openedFiles, fileToOpen],
            currentFile: fileToOpen
@@ -63,10 +64,10 @@ const EditorBody: React.FunctionComponent<EditorBodyProps> = ({root, openedFiles
     <div className="editor-body">
         <FileExplorerSidebar root={root} currentFile={currentFile} onOpenFile={onOpenFile}/>
 
-        {/*<div>
-            <TabManager openedFiles={openedFiles}/>
+        <div>
+            <TabManager currentFile={currentFile} openedFiles={openedFiles}/>
             <FileViewer currentFile={currentFile}/>
-        </div>*/}
+        </div>
     </div>
 );
 

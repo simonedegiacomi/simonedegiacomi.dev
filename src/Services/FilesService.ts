@@ -11,7 +11,9 @@ export default {
     },
 
     async getFileContent(file: File): Promise<string> {
-        return "";
+        const url = file.name;
+        console.log(url);
+        return "# Titolo\n## Secondo titolo\n\ntesto";
     }
 }
 

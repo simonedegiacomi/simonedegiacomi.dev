@@ -1,0 +1,34 @@
+div.file-content-container {
+    padding: 1em;
+}
+
+div.file-content-container *:before {
+    color: green;
+}
+
+div.file-content-container h1:before {
+    content: '# ';
+}
+
+div.file-content-container h2:before {
+    content: '## ';
+}
+
+
+div.file-content-container h3:before {
+    content: '### ';
+}
+
+
+div.file-content-container h4:before {
+    content: '#### ';
+}
+
+div.file-content-container h5:before {
+    content: '##### ';
+}
+
+div.file-content-container h6:before {
+    content: '###### ';
+}
+
