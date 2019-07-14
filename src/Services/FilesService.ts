@@ -1,7 +1,8 @@
 import File from "../Models/File";
 import Folder from "../Models/Folder";
 
-const FILE_INDEX_URL = '/files/index.json';
+const ROOT_URL = '/pages';
+const FILE_INDEX_URL = `${ROOT_URL}/index.json`;
 
 export default {
 
@@ -11,9 +12,11 @@ export default {
     },
 
     async getFileContent(file: File): Promise<string> {
-        const url = file.name;
+        const url = `${ROOT_URL}${file.getPath()}`;
         console.log(url);
-        return "# Titolo\n## Secondo titolo\n\ntesto";
+
+        const res = await fetch(url);
+        return await res.text();
     }
 }
 

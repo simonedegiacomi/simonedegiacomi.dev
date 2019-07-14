@@ -22,4 +22,12 @@ export default class Folder {
         this.content.push(fileOrFolder);
     }
 
+    getPath (): string {
+        if (this.isRoot()) {
+            return '/';
+        }
+        // @ts-ignore
+        return `${this.parentFolder.getPath()}${this.name}/`;
+    }
+
 }

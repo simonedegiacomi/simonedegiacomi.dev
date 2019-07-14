@@ -1,7 +1,23 @@
 div.editor-header {
     height: 1rem;
+    padding: .5em;
+
+    text-align: center;
 
     background-color: black;
-
     color: white;
 }
+
+div.folder:before {
+    content: '▶';
+}
+
+div.folder.expanded {
+    rotation: 90deg;
+}
+
+div.folder.root:before {
+    content: '';
+}
+
+

@@ -42,16 +42,38 @@ export default class Editor extends Component<any, EditorState> {
         );
     }
 
-    handleOpenFile = (fileToOpen: File) => {
-        console.log('handleOpenFile()', fileToOpen);
-        this.setState({
-           openedFiles: [...this.state.openedFiles, fileToOpen],
-           currentFile: fileToOpen
-        });
-    };
+    // TODO: Maybe rename to showFile
+    handleOpenFile = (fileToOpen: File) => this.setState(state => {
+        if (this.isFileAlreadyOpenInState(state, fileToOpen)) {
+            return this.getStateUpdateWithFileAsCurrent(fileToOpen);
+        } else {
+          return this.getStateUpdateWithNewOpenFile(state, fileToOpen);
+        }
+    });
 
-    handleCloseFile = (fileToClose: File) => {
-    };
+
+    isFileAlreadyOpenInState = (state: EditorState, file: File) => state.openedFiles.indexOf(file) >= 0;
+
+    getStateUpdateWithFileAsCurrent = (file: File) => ({currentFile: file});
+
+    getStateUpdateWithNewOpenFile = (state: EditorState, fileToOpen: File) =>({
+        openedFiles: [...state.openedFiles, fileToOpen],
+        currentFile: fileToOpen
+    });
+
+    handleCloseFile = (fileToClose: File) => this.setState((state) => {
+        const openedFiles = this.getFileArrayWithoutFile(state.openedFiles, fileToClose);
+        return {
+            openedFiles,
+            currentFile: state.currentFile === fileToClose ? openedFiles[openedFiles.length - 1] : state.currentFile
+        }
+    });
+
+    getFileArrayWithoutFile = (files: File[], file: File) => {
+        const copy = [...files];
+        copy.splice(copy.indexOf(file), 1);
+        return copy;
+    }
 }
 
 interface EditorState {
@@ -60,18 +82,23 @@ interface EditorState {
     currentFile: File | null
 }
 
-const EditorBody: React.FunctionComponent<EditorBodyProps> = ({root, openedFiles, currentFile, onOpenFile}) => (
+const EditorBody: React.FunctionComponent<EditorBodyProps> = ({root, openedFiles, currentFile, onOpenFile, onCloseFile}) => (
     <div className="editor-body">
         <FileExplorerSidebar root={root} currentFile={currentFile} onOpenFile={onOpenFile}/>
 
         <div>
-            <TabManager currentFile={currentFile} openedFiles={openedFiles}/>
+            <TabManager currentFile={currentFile} openedFiles={openedFiles} onOpenFile={onOpenFile} onCloseFile={onCloseFile}/>
             <FileViewer currentFile={currentFile}/>
         </div>
     </div>
 );
 
-interface EditorBodyProps extends EditorState {
-    onOpenFile: (fileToOpen: File) => void,
+export interface FileOpener {
+    onOpenFile: (fileToOpen: File) => void
+}
+
+export interface FileCloser {
     onCloseFile: (fileToClose: File) => void
 }
+
+interface EditorBodyProps extends EditorState, FileOpener, FileCloser {}

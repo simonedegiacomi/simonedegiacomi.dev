@@ -4,6 +4,7 @@ import "./FileExplorerSidebar.css";
 import File from "../../Models/File";
 import Folder from "../../Models/Folder";
 import {FolderComponent} from "./FolderComponent";
+import {FileOpener} from "../Editor";
 
 export default class FileExplorerSidebar extends Component<FileExplorerSidebarProps> {
 
@@ -25,10 +26,9 @@ export default class FileExplorerSidebar extends Component<FileExplorerSidebarPr
     }
 }
 
-interface FileExplorerSidebarProps {
+interface FileExplorerSidebarProps extends FileOpener{
     root: Folder | null,
-    currentFile: File | null,
-    onOpenFile: (fileToOpen: File) => void
+    currentFile: File | null
 }
 
 

@@ -7,8 +7,7 @@ export default class EditorHeader extends Component {
     render(): React.ReactNode {
         return (
             <div className="editor-header">
-                Icona
-                Titolo
+                simonedegiacomi.dev
             </div>
         );
     }
