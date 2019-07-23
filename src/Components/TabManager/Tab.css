@@ -1,8 +1,0 @@
-div.tab {
-    padding: 4px 1rem;
-    background-color: gray;
-}
-
-div.tab.current-tab {
-    background-color: black;
-}

@@ -1,0 +1,34 @@
+
+
+div.history-list {
+
+}
+
+div.history-list h3 + p,
+div.history-list h3 + div.history-list-item-multiple-paragraphs {
+    position: relative;
+    padding-left: 2em;
+}
+
+div.history-list h3:before {
+    content: url("../../../../icons/point.svg");
+    width: 1em;
+
+    color: white;
+    margin-right: 6px;
+}
+
+div.history-list h3 + p:before,
+div.history-list h3 + div.history-list-item-multiple-paragraphs:before {
+    content: "";
+    position: absolute;
+    left: .6em;
+    top: -1em;
+    height: calc(100% + 2.5em);
+    border: 1px solid white;
+}
+
+div.history-list h3:last-of-type + p:before {
+    height: 0;
+    border: none;
+}

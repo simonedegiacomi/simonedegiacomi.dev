@@ -1,22 +1,21 @@
 import React, {Component} from "react";
 
 import "./Editor.css";
-import EditorHeader from "../EditorHeader";
-import FileExplorerSidebar from "../FileExplorerSidebar";
-import TabManager from "../TabManager";
-import FileViewer from "../FileViewer";
-import EditorFooter from "../EditorFooter/EditorFooter";
+import EditorHeader from "./EditorHeader/EditorHeader";
+import EditorFooter from "./EditorFooter/EditorFooter";
 import File from "../../Models/File";
 import Folder from "../../Models/Folder";
 import FilesService from "../../Services/FilesService";
-import {file} from "@babel/types";
+import {EditorBody} from "./EditorBody/EditorBody";
 
 export default class Editor extends Component<any, EditorState> {
 
     state: EditorState = {
         root: null,
         openedFiles: [],
-        currentFile: null
+        currentFile: null,
+
+        mobileMenuOpen: false
     };
 
     async componentDidMount() {
@@ -35,12 +34,23 @@ export default class Editor extends Component<any, EditorState> {
     render(): React.ReactNode {
         return (
             <div className="editor">
-                <EditorHeader/>
-                <EditorBody {...this.state} onOpenFile={this.handleOpenFile} onCloseFile={this.handleCloseFile}/>
-                <EditorFooter/>
+                <EditorHeader onMobileMenuToggled={this.handleMobileMenuToggled}/>
+                <EditorBody {...this.state}
+                            onOpenFile={this.handleOpenFile}
+                            onCloseFile={this.handleCloseFile}
+                            mobileMenuOpen={this.state.mobileMenuOpen}/>
+                <EditorFooter currentFile={this.state.currentFile}/>
             </div>
         );
     }
+
+    handleMobileMenuToggled = () => {
+        this.setState(({mobileMenuOpen}) => {
+            return {
+                mobileMenuOpen: !mobileMenuOpen
+            };
+        });
+    };
 
     // TODO: Maybe rename to showFile
     handleOpenFile = (fileToOpen: File) => this.setState(state => {
@@ -76,22 +86,13 @@ export default class Editor extends Component<any, EditorState> {
     }
 }
 
-interface EditorState {
+export interface EditorState {
     root: Folder | null,
     openedFiles: File[],
-    currentFile: File | null
+    currentFile: File | null,
+
+    mobileMenuOpen: boolean
 }
-
-const EditorBody: React.FunctionComponent<EditorBodyProps> = ({root, openedFiles, currentFile, onOpenFile, onCloseFile}) => (
-    <div className="editor-body">
-        <FileExplorerSidebar root={root} currentFile={currentFile} onOpenFile={onOpenFile}/>
-
-        <div>
-            <TabManager currentFile={currentFile} openedFiles={openedFiles} onOpenFile={onOpenFile} onCloseFile={onCloseFile}/>
-            <FileViewer currentFile={currentFile}/>
-        </div>
-    </div>
-);
 
 export interface FileOpener {
     onOpenFile: (fileToOpen: File) => void
@@ -101,4 +102,3 @@ export interface FileCloser {
     onCloseFile: (fileToClose: File) => void
 }
 
-interface EditorBodyProps extends EditorState, FileOpener, FileCloser {}

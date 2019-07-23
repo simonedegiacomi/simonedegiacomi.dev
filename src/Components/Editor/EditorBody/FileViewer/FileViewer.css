@@ -1,0 +1,45 @@
+div.file-viewer {
+    overflow-y: auto;
+}
+
+div.file-content-container {
+    padding: 1em;
+}
+
+div.file-content-container *:before {
+    color: green;
+}
+
+div.file-content-container h1:before {
+    content: '# ';
+}
+
+div.file-content-container h1 {
+    font-size: 2rem;
+}
+
+div.file-content-container h2:before {
+    content: '## ';
+}
+
+div.file-content-container h2 {
+    font-size: 1.5rem;
+}
+
+
+div.file-content-container h3:before {
+    content: '### ';
+}
+
+
+div.file-content-container h3 {
+    font-size: 1.3rem;
+}
+
+
+div.file-content-container blockquote {
+    margin-left: .5em;
+    box-sizing: border-box;
+    padding-left: 1em;
+    border-left: 10px solid gray;
+}

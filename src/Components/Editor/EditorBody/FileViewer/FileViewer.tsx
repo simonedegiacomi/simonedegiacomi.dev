@@ -1,15 +1,21 @@
 import React, {Component} from 'react';
 import MarkdownIt from 'markdown-it';
+import MarkdownItContainer from 'markdown-it-container';
 
-import File from "../../Models/File";
-import FilesService from "../../Services/FilesService";
+import File from "../../../../Models/File";
+import FilesService from "../../../../Services/FilesService";
 import './FileViewer.css';
+import './history-list.css';
+import LeftArrow from '../../../../icons/arrow-left.svg';
+import {OpenFileFromSidebar} from "./OpenFileFromSidebar/OpenFileFromSidebar";
 
 export default class FileViewer extends Component<FileViewerProps> {
 
-    private promise: (Promise<string> | null) = null;
+    //private promise: (Promise<string> | null) = null;
 
-    private markdownRenderer = new MarkdownIt();
+    private markdownRenderer = new MarkdownIt({html: true})
+        .use(MarkdownItContainer, 'history-list')
+        .use(MarkdownItContainer, 'history-list-item-multiple-paragraphs');
 
     state: { content: string | null } = {
         content: null
@@ -25,7 +31,7 @@ export default class FileViewer extends Component<FileViewerProps> {
     }
 
     async downloadFileContent() {
-        const { currentFile } = this.props;
+        const {currentFile} = this.props;
         if (currentFile == null) {
             return;
         }
@@ -37,22 +43,22 @@ export default class FileViewer extends Component<FileViewerProps> {
     render(): React.ReactNode {
         if (this.props.currentFile && !this.state.content) {
             return "Downloading...";
-        } else if (this.state.content) {
+        } else if (this.props.currentFile && this.state.content) {
             return this.renderFileContent();
         }
-        return (
-            <div>Open a file from the left</div>
-        );
+        return <OpenFileFromSidebar/>;
     }
 
     renderFileContent() {
         if (!this.state.content) {
-            return ;
+            return;
         }
         const html = this.markdownRenderer.render(this.state.content);
         return (
-            <div className="file-content-container"
-                 dangerouslySetInnerHTML={{__html: html}}>
+            <div className="file-viewer">
+                <div className="container file-content-container"
+                     dangerouslySetInnerHTML={{__html: html}}>
+                </div>
             </div>
         );
     }

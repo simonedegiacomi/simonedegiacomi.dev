@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 
 import "./Desktop.css";
-import Editor from "../Editor";
+import Editor from "../Editor/Editor";
 
 export default class Desktop extends Component {
 

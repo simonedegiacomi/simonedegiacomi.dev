@@ -1,0 +1,19 @@
+div.file-explorer-sidebar {
+    min-width: 320px;
+    max-width: 320px;
+    background-color: var(--fileExplorerSidebarBackgroundColor);
+
+    transition: margin-left;
+    transition-duration: .5s;
+}
+
+@media (max-width: 767.98px) {
+    div.file-explorer-sidebar {
+        margin-left: -320px;
+    }
+
+    div.file-explorer-sidebar.mobile-menu-open {
+        margin-left: 0;
+    }
+}
+

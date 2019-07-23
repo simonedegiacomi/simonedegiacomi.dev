@@ -1,0 +1,18 @@
+div.open-from-sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    font-size: 2rem;
+
+    max-width: 60vmin;
+}
+
+div.open-from-sidebar img {
+    width: 60vmin;
+    max-width: 20rem;
+}
+
+div.open-from-sidebar p {
+    text-align: center;
+}

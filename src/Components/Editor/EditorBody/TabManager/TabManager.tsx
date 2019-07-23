@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 
-import File from "../../Models/File";
+import File from "../../../../Models/File";
 import {Tab} from "./Tab";
 import "./TabManager.css"
-import {FileCloser, FileOpener} from "../Editor";
+import {FileCloser, FileOpener} from "../../Editor";
 
 export default class TabManager extends Component<TabManagerProps> {
 

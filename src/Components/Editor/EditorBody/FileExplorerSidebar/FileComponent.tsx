@@ -1,13 +1,17 @@
 import {Component} from "react";
 import React from "react";
-import File from "../../Models/File";
+
+import FileIcon from "../../../../icons/file.svg";
+import File from "../../../../Models/File";
+import "./FileComponent.css";
 
 export class FileComponent extends Component<FileComponentProps> {
 
     render(): React.ReactNode {
         const {file, onOpenFile} = this.props;
         return (
-            <div onClick={() => onOpenFile(file)}>
+            <div onClick={() => onOpenFile(file)} className="file-icon-and-name">
+                <img src={FileIcon} className="file-icon"/>
                 {file.name}
             </div>
         );

@@ -1,0 +1,30 @@
+div.folder ul {
+    list-style: none;
+    padding-left: 1rem;
+    max-height: 0;
+    overflow-y: hidden;
+
+    transition-property: max-height;
+    transition-duration: .5s;
+}
+
+div.folder.expanded > ul {
+    max-height: 500px; /* TODO: Find another solution to animate the change of height */
+}
+
+div.folder li {
+    padding: .25rem .12rem;
+}
+
+img.folder-toggler {
+    transition-property: transform;
+    transition-duration: .5s;
+}
+
+div.folder.expanded > div.folder-name-and-toggler img{
+    transform: rotate(90deg);
+}
+
+div.folder-name-and-toggler {
+    cursor: pointer;
+}

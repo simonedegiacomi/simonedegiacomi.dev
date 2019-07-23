@@ -1,0 +1,17 @@
+div.editor-header {
+    height: 2.5rem;
+    padding: .5em;
+    display: flex;
+
+    text-align: center;
+
+    background-color: black;
+    color: white;
+}
+
+div.mobile-menu-toggle-trigger {
+    cursor: pointer;
+}
+
+
+
