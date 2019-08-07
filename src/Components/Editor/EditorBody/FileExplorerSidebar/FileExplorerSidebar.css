@@ -1,7 +1,7 @@
 div.file-explorer-sidebar {
     min-width: 320px;
     max-width: 320px;
-    background-color: var(--fileExplorerSidebarBackgroundColor);
+    background-color: var(--darkBackgroundColor);
 
     transition: margin-left;
     transition-duration: .5s;

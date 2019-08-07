@@ -1,4 +1,6 @@
 div.tabs-container {
     display: flex;
     background-color: #070802;
+    overflow-x: auto;
+    min-height: 2.125em;
 }

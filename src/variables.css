@@ -1,5 +1,7 @@
 :root {
-    --editorBackgroundColor: #272822;
-
-    --fileExplorerSidebarBackgroundColor: #181915;
+    --darkColor: #000000;
+    --darkBackgroundColor: #202020;/*#181915;*/
+    --darkBackgroundLighterColor: #272822;
+    --textColor: #CCC;
+    --textDarkerColor: #888888;
 }

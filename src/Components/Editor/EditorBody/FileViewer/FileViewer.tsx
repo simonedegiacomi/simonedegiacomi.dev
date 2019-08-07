@@ -5,7 +5,7 @@ import MarkdownItContainer from 'markdown-it-container';
 import File from "../../../../Models/File";
 import FilesService from "../../../../Services/FilesService";
 import './FileViewer.css';
-import './history-list.css';
+import './styles/history-list.css';
 import LeftArrow from '../../../../icons/arrow-left.svg';
 import {OpenFileFromSidebar} from "./OpenFileFromSidebar/OpenFileFromSidebar";
 

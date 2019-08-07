@@ -10,7 +10,7 @@ div.editor {
     overflow-y: auto;
     overflow-x: hidden;
 
-    background-color: var(--editorBackgroundColor);
+    background-color: var(--darkBackgroundLighterColor);
     box-shadow: 0 0 15px 2px black;
     border-radius: 5px;
 }
@@ -18,8 +18,8 @@ div.editor {
 
 @media (max-width: 767.98px) {
     div.editor {
-        width: 95vw;
-        height: 95vh;
+        width: 100vw;
+        height: 100vh;
     }
 }
 
