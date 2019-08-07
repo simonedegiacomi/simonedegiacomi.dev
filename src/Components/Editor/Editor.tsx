@@ -19,15 +19,26 @@ export default class Editor extends Component<any, EditorState> {
     };
 
     async componentDidMount() {
-        await this.fetchRoot();
+        const root = await this.fetchRoot();
+        this.setState({root});
+        this.openFileFromUrlIfPresent(root);
     }
 
-    async fetchRoot() {
+    async fetchRoot(): Promise<Folder> {
         try {
-            const root = await FilesService.getRoot();
-            this.setState({root});
+            return await FilesService.getRoot();
         } catch (e) {
             console.error(e);
+            throw e;
+        }
+    }
+
+    openFileFromUrlIfPresent (root: Folder) {
+        // eslint-disable-next-line no-restricted-globals
+        const filePath = location.pathname;
+        const file = root.getFile(decodeURI(filePath));
+        if (file instanceof File) {
+            this.handleOpenFile(file);
         }
     }
 
@@ -54,11 +65,14 @@ export default class Editor extends Component<any, EditorState> {
 
     // TODO: Maybe rename to showFile
     handleOpenFile = (fileToOpen: File) => this.setState(state => {
+        let newState;
         if (this.isFileAlreadyOpenInState(state, fileToOpen)) {
-            return this.getStateUpdateWithFileAsCurrent(fileToOpen);
+            newState = this.getStateUpdateWithFileAsCurrent(fileToOpen);
         } else {
-          return this.getStateUpdateWithNewOpenFile(state, fileToOpen);
+            newState = this.getStateUpdateWithNewOpenFile(state, fileToOpen);
         }
+        this.updateUrlWithCurrentFile(newState.currentFile);
+        return newState;
     });
 
 
@@ -70,6 +84,11 @@ export default class Editor extends Component<any, EditorState> {
         openedFiles: [...state.openedFiles, fileToOpen],
         currentFile: fileToOpen
     });
+
+    updateUrlWithCurrentFile = (currentFile: File) => {
+        // eslint-disable-next-line no-restricted-globals
+        history.pushState({}, currentFile.name, currentFile.getPath());
+    };
 
     handleCloseFile = (fileToClose: File) => this.setState((state) => {
         const openedFiles = this.getFileArrayWithoutFile(state.openedFiles, fileToClose);

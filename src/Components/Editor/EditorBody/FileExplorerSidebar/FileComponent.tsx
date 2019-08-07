@@ -1,5 +1,4 @@
-import {Component} from "react";
-import React from "react";
+import React, {Component} from "react";
 
 import FileIcon from "../../../../icons/file.svg";
 import File from "../../../../Models/File";
