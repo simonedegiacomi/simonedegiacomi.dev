@@ -7,10 +7,9 @@ import FilesService from "../../../../Services/FilesService";
 import './FileViewer.css';
 import './styles/history-list.css';
 import {OpenFileFromSidebar} from "./OpenFileFromSidebar/OpenFileFromSidebar";
+import {DownloadingFileContent} from "./DownloadingFileContent/DownloadingFileContent";
 
 export default class FileViewer extends Component<FileViewerProps> {
-
-    //private promise: (Promise<string> | null) = null;
 
     private markdownRenderer = new MarkdownIt({html: true})
         .use(MarkdownItContainer, 'history-list')
@@ -20,32 +19,30 @@ export default class FileViewer extends Component<FileViewerProps> {
         content: null
     };
 
-    componentDidUpdate(prevProps: Readonly<FileViewerProps>, prevState: Readonly<{}>, snapshot?: any): void {
+    async componentDidUpdate(prevProps: Readonly<FileViewerProps>, prevState: Readonly<{}>, snapshot?: any): Promise<void> {
         if (this.props.currentFile === prevProps.currentFile) {
-            console.log('ignoring update');
             return;
         }
-        console.log('did update');
-        const promise = this.downloadFileContent();
+        await this.downloadFileContent();
     }
 
-    async downloadFileContent() {
+    async downloadFileContent():Promise<void> {
+        this.setState({content: null});
         const {currentFile} = this.props;
         if (currentFile == null) {
             return;
         }
         const content = await FilesService.getFileContent(currentFile);
-        console.log('[FILE-VIEWER] got content', content);
         this.setState({content});
     }
 
     render(): React.ReactNode {
-        if (this.props.currentFile && !this.state.content) {
-            return "Downloading...";
-        } else if (this.props.currentFile && this.state.content) {
-            return this.renderFileContent();
+        if (!this.props.currentFile) {
+            return <OpenFileFromSidebar/>;
+        } else if (!this.state.content) {
+            return <DownloadingFileContent/>;
         }
-        return <OpenFileFromSidebar/>;
+        return this.renderFileContent();
     }
 
     renderFileContent() {

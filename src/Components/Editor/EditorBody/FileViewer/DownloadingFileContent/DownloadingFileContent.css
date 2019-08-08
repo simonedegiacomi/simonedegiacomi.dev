@@ -1,0 +1,15 @@
+div.loading-content {
+    color: var(--textColor);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: auto;
+    font-size: 2rem;
+}
+
+div.loading-content-spinner {
+    width: 10rem;
+    height: 10rem;
+    border-width: 1rem;
+    animation-duration: 1s;
+}

@@ -13,7 +13,6 @@ export default {
 
     async getFileContent(file: File): Promise<string> {
         const url = `${ROOT_URL}${file.getPath()}`;
-        console.log(url);
 
         const res = await fetch(url);
         return await res.text();
