@@ -1,11 +1,11 @@
 import React from 'react';
 
-import Desktop from "./Components/Desktop";
+import Editor from "./Components/Editor/Editor";
 
 const App: React.FC = () => {
   return (
     <div className="App">
-      <Desktop/>
+      <Editor/>
     </div>
   );
 };

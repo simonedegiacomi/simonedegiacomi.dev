@@ -1,6 +1,6 @@
 div.editor {
-    width: 90vw;
-    height: 90vh;
+    width: 100vw;
+    height: 100vh;
 
     margin: auto;
 
@@ -13,14 +13,6 @@ div.editor {
     background-color: var(--darkBackgroundLighterColor);
     box-shadow: 0 0 15px 2px black;
     border-radius: 5px;
-}
-
-
-@media (max-width: 767.98px) {
-    div.editor {
-        width: 100vw;
-        height: 100vh;
-    }
 }
 
 div.editor-body {
