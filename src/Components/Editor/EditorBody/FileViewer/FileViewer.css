@@ -2,8 +2,18 @@ div.file-viewer {
     overflow-y: auto;
 }
 
+div.file-viewer p {
+    text-align: justify;
+
+    font-size: 1.1rem;
+}
+
 div.file-content-container {
     padding: 1em;
+}
+
+div.file-content-container h2 {
+    margin-top: 1em;
 }
 
 div.file-content-container *:before {

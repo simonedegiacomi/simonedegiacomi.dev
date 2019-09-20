@@ -21,7 +21,7 @@ export default class Editor extends Component<any, EditorState> {
     async componentDidMount() {
         const root = await this.fetchRoot();
         this.setState({root});
-        this.openFileFromUrlIfPresent(root);
+        this.openFileFromUrlOrDefault(root);
     }
 
     async fetchRoot(): Promise<Folder> {
@@ -33,24 +33,34 @@ export default class Editor extends Component<any, EditorState> {
         }
     }
 
-    openFileFromUrlIfPresent (root: Folder) {
-        // eslint-disable-next-line no-restricted-globals
-        const filePath = location.pathname;
-        const file = root.getFile(decodeURI(filePath));
-        if (file instanceof File) {
+    openFileFromUrlOrDefault(root: Folder) {
+        const filePath = this.getFilePathFromUrlOrDefault();
+        const file = root.getFileOrNull(decodeURI(filePath));
+        if (file != null && file instanceof File) {
             this.handleOpenFile(file);
         }
     }
 
+    getFilePathFromUrlOrDefault() {
+        // eslint-disable-next-line no-restricted-globals
+        const pathFromUrl = location.pathname;
+        if (pathFromUrl === '/') {
+            return '/About me.md';
+        }
+        return pathFromUrl;
+    }
+
     render(): React.ReactNode {
+        const {mobileMenuOpen, currentFile} = this.state;
         return (
             <div className="editor">
-                <EditorHeader onMobileMenuToggled={this.handleMobileMenuToggled}/>
+                <EditorHeader onMobileMenuToggled={this.handleMobileMenuToggled}
+                              mobileMenuOpen={mobileMenuOpen}/>
                 <EditorBody {...this.state}
                             onOpenFile={this.handleOpenFile}
                             onCloseFile={this.handleCloseFile}
-                            mobileMenuOpen={this.state.mobileMenuOpen}/>
-                <EditorFooter currentFile={this.state.currentFile}/>
+                            mobileMenuOpen={mobileMenuOpen}/>
+                <EditorFooter currentFile={currentFile}/>
             </div>
         );
     }
@@ -72,7 +82,10 @@ export default class Editor extends Component<any, EditorState> {
             newState = this.getStateUpdateWithNewOpenFile(state, fileToOpen);
         }
         this.updateUrlWithCurrentFile(newState.currentFile);
-        return newState;
+        return {
+            ...newState,
+            mobileMenuOpen: false
+        };
     });
 
 
@@ -80,7 +93,7 @@ export default class Editor extends Component<any, EditorState> {
 
     getStateUpdateWithFileAsCurrent = (file: File) => ({currentFile: file});
 
-    getStateUpdateWithNewOpenFile = (state: EditorState, fileToOpen: File) =>({
+    getStateUpdateWithNewOpenFile = (state: EditorState, fileToOpen: File) => ({
         openedFiles: [...state.openedFiles, fileToOpen],
         currentFile: fileToOpen
     });

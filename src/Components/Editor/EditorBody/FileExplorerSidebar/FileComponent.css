@@ -2,6 +2,7 @@ img.file-icon {
     margin-right: 0.2rem;
 }
 
-div.file-icon-and-name {
+span.file-icon-and-name {
     cursor: pointer;
+    white-space: nowrap;
 }

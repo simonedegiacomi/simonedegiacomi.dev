@@ -30,14 +30,14 @@ export default class Folder {
         return `${this.parentFolder.getPath()}${this.name}/`;
     }
 
-    getFile(filePath: string): File|Folder {
+    getFileOrNull(filePath: string): File|Folder|null {
         console.log('searching', filePath)
         const pieces = filePath.split('/');
 
         if (pieces[0] === this.name) {
             pieces.splice(0, 1);
         } else {
-            throw new Error('file not found');
+            return null;
         }
 
         for (const item of this.content) {
@@ -45,11 +45,11 @@ export default class Folder {
                 if (item instanceof File) {
                     return item;
                 } else {
-                    return item.getFile(pieces.join('/'));
+                    return item.getFileOrNull(pieces.join('/'));
                 }
             }
         }
 
-        throw new Error('file not found');
+        return null;
     }
 }

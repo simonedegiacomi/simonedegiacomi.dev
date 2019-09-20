@@ -1,6 +1,6 @@
 div.folder ul {
     list-style: none;
-    padding-left: 1rem;
+    padding-left: .5rem;
     max-height: 0;
     overflow-y: hidden;
 

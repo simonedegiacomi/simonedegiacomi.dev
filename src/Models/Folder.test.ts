@@ -9,7 +9,7 @@ describe('Folder unit test', () => {
         root.add(file);
 
         // when
-        const foundFile = root.getFile('/test.md');
+        const foundFile = root.getFileOrNull('/test.md');
 
         // then
         expect(foundFile).toBeTruthy();
@@ -25,7 +25,7 @@ describe('Folder unit test', () => {
         folder.add(file);
 
         // when
-        const foundFile = root.getFile('/folder/test.md');
+        const foundFile = root.getFileOrNull('/folder/test.md');
 
         // then
         expect(foundFile).toBeTruthy();
@@ -36,7 +36,7 @@ describe('Folder unit test', () => {
         // given
         const root = Folder.createRoot();
 
-        expect(() => root.getFile('/test.md'))
+        expect(() => root.getFileOrNull('/test.md'))
             .toThrow(new Error("file not found"));
     });
 

@@ -22,7 +22,7 @@ export class FolderComponent extends Component<FolderComponentProps, FolderCompo
                 <div className="folder-name-and-toggler">
                     {
                         !folder.isRoot() &&
-                        <img src={FolderToggleTriggerIcon} className="folder-toggler"/>
+                        <img alt="folder icon" src={FolderToggleTriggerIcon} className="folder-toggler"/>
                     }
                     {folder.name}
                 </div>
@@ -35,7 +35,9 @@ export class FolderComponent extends Component<FolderComponentProps, FolderCompo
 
     handleClick:MouseEventHandler = (e) => {
         e.stopPropagation();
-        this.setState(({expanded}, _) => ({expanded: !expanded}));
+        if (!this.props.folder.isRoot()) {
+            this.setState(({expanded}, _) => ({expanded: !expanded}));
+        }
     };
 
     renderChildren() {
@@ -44,7 +46,7 @@ export class FolderComponent extends Component<FolderComponentProps, FolderCompo
             <ul>
                 {
                     folder.content.map(fileOrFolder => (
-                        <li key={Math.random()}>
+                        <li key={fileOrFolder.getPath()}>
                             {
                                 this.renderFileOrFolder(fileOrFolder)
                             }

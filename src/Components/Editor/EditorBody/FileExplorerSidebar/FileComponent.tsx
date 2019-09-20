@@ -7,13 +7,18 @@ import "./FileComponent.css";
 export class FileComponent extends Component<FileComponentProps> {
 
     render(): React.ReactNode {
-        const {file, onOpenFile} = this.props;
+        const {file} = this.props;
         return (
-            <div onClick={() => onOpenFile(file)} className="file-icon-and-name">
-                <img src={FileIcon} className="file-icon"/>
+            <span onClick={this.onOpenFile} className="file-icon-and-name">
+                <img alt="file icon" src={FileIcon} className="file-icon"/>
                 {file.name}
-            </div>
+            </span>
         );
+    }
+
+    onOpenFile = (event: React.MouseEvent<HTMLElement>) => {
+        event.stopPropagation();
+        this.props.onOpenFile(this.props.file);
     }
 }
 

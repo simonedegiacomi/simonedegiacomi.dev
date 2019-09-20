@@ -1,7 +1,6 @@
 
-
-div.history-list {
-
+div.history-list h3 {
+    margin-top: 1em;
 }
 
 div.history-list h3 + p,
@@ -24,12 +23,13 @@ div.history-list h3 + div.history-list-item-multiple-paragraphs:before {
     content: "";
     position: absolute;
     left: .6125em;
-    top: -1em;
-    height: calc(100% + 2.1em);
-    border: 1px solid var(--textColor);
+    top: -0.96em;
+    height: calc(100% + 2.35em);
+    border: 1px solid var(--textDarkerDarkerColor);
 }
 
-div.history-list h3:last-of-type + p:before {
+div.history-list h3:last-of-type + p:before,
+div.history-list h3:last-of-type + div.history-list-item-multiple-paragraphs:before{
     height: 0;
     border: none;
 }

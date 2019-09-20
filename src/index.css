@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap'); /* 'Source code pro' */
+@import url('https://fonts.googleapis.com/css?family=Ubuntu|Ubuntu+Mono&display=swap');
+
 body {
   color: var(--textColor);
   margin: 0;
@@ -6,6 +9,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  font-family: 'Ubuntu', sans-serif;
 }
 
 code {

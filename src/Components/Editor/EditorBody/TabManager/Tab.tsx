@@ -10,7 +10,7 @@ export const Tab: FunctionComponent<TabProps> = ({file, onSelectFile, onCloseFil
             file.name
         }
         <div onClick={e => {e.stopPropagation(); onCloseFile();}}>
-            <img src={CloseIcon}/>
+            <img alt="close tab" src={CloseIcon}/>
         </div>
     </div>
 );

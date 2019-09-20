@@ -13,5 +13,11 @@ div.mobile-menu-toggle-trigger {
     cursor: pointer;
 }
 
+@media (min-width: 640px) {
+    div.mobile-menu-toggle-trigger {
+        display: none;
+    }
+}
+
 
 
