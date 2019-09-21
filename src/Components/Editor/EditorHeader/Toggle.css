@@ -1,0 +1,51 @@
+
+div.toggle {
+    width: 2rem;
+    height: 2rem;
+
+    margin-top: .15rem;
+    position: relative;
+
+    cursor: pointer;
+}
+
+div.toggle span {
+    display: block;
+    position: absolute;
+
+    height: .25rem;
+    width: 100%;
+
+    background: var(--textColor);
+    border-radius: 9px;
+    left: 0;
+
+    transform: rotate(0deg);
+    transition: .5s ease-in-out;
+}
+
+div.toggle span:nth-child(1) {
+    top: 0;
+}
+
+div.toggle span:nth-child(2) {
+    top: .5rem;
+}
+
+div.toggle span:nth-child(3) {
+    top: 1rem;
+}
+
+div.toggle.open span:nth-child(1) {
+    top: .5rem;
+    transform: rotate(-45deg);
+}
+
+div.toggle.open span:nth-child(2) {
+    left: -3rem;
+}
+
+div.toggle.open span:nth-child(3) {
+    top: .5rem;
+    transform: rotate(45deg);
+}
