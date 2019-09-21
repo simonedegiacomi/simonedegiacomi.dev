@@ -8,13 +8,23 @@
         "type": "folder",
         "content": [
           {
-            "name": "First period.md",
+            "name": "Introduction.md",
+            "type": "file"
+          },
+          {
+            "name": "Development log.md",
             "type": "file"
           }
         ]
-      },
+      }
+    ]
+  },
+  {
+    "name":"Hackathons",
+    "type": "folder",
+    "content": [
       {
-        "name": "Portfolio.md",
+        "name": "NOI Hackathon Summer Edition 2019.md",
         "type": "file"
       }
     ]
