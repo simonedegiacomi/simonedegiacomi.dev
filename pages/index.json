@@ -1,0 +1,36 @@
+[
+  {
+    "name": "Projects",
+    "type": "folder",
+    "content": [
+      {
+        "name": "GSoC",
+        "type": "folder",
+        "content": [
+          {
+            "name": "Introduction.md",
+            "type": "file"
+          },
+          {
+            "name": "Development log.md",
+            "type": "file"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name":"Hackathons",
+    "type": "folder",
+    "content": [
+      {
+        "name": "NOI Hackathon Summer Edition 2019.md",
+        "type": "file"
+      }
+    ]
+  },
+  {
+    "name": "About me.md",
+    "type": "file"
+  }
+]
