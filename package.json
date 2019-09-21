@@ -1,7 +1,7 @@
 {
-  "name": "personal-website",
+  "name": "simonedegiacomi.dev",
   "version": "0.1.0",
-  "private": true,
+  "homepage": "https://simonedegiacomi.dev",
   "dependencies": {
     "@types/classnames": "^2.2.9",
     "@types/jest": "^24.0.18",
@@ -12,6 +12,7 @@
     "@types/react-dom": "16.8.4",
     "bootstrap": "^4.3.1",
     "classnames": "^2.2.6",
+    "gh-pages": "^2.1.1",
     "markdown-it": "^8.4.2",
     "markdown-it-container": "^2.0.0",
     "react": "^16.9.0",
@@ -25,7 +26,9 @@
     "start": "PORT=4000 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -b master -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
