@@ -25,12 +25,8 @@ export default class Editor extends Component<any, EditorState> {
     }
 
     async fetchRoot(): Promise<Folder> {
-        try {
-            return await FilesService.getRoot();
-        } catch (e) {
-            console.error(e);
-            throw e;
-        }
+        return await FilesService.getRoot();
+        // TODO: Handle error
     }
 
     openFileFromUrlOrDefault(root: Folder) {
@@ -43,11 +39,12 @@ export default class Editor extends Component<any, EditorState> {
 
     getFilePathFromUrlOrDefault() {
         // eslint-disable-next-line no-restricted-globals
-        const pathFromUrl = location.pathname;
-        if (pathFromUrl === '/') {
+        const pathFromUrl = location.hash;
+        if (pathFromUrl.indexOf('#') === 0) {
+            return pathFromUrl.substr(1);
+        } else {
             return '/About me.md';
         }
-        return pathFromUrl;
     }
 
     render(): React.ReactNode {
@@ -100,7 +97,7 @@ export default class Editor extends Component<any, EditorState> {
 
     updateUrlWithCurrentFile = (currentFile: File) => {
         // eslint-disable-next-line no-restricted-globals
-        history.pushState({}, currentFile.name, currentFile.getPath());
+        history.pushState({}, currentFile.name, `#${currentFile.getPath()}`);
     };
 
     handleCloseFile = (fileToClose: File) => this.setState((state) => {
