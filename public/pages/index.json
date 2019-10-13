@@ -24,7 +24,11 @@
     "type": "folder",
     "content": [
       {
-        "name": "NOI Hackathon Summer Edition 2019.md",
+        "name": "Olivetti Cash Register 2019.md",
+        "type": "file"
+      },
+      {
+        "name": "NOI Summer Edition 2019.md",
         "type": "file"
       }
     ]

@@ -1,3 +1,5 @@
+# NOI Hackathon Summer Edition 2019
+
 ## Challenges
 
 The hackathon had 3 main sponsors which provided 3 different challenges, each one with its own prize.
