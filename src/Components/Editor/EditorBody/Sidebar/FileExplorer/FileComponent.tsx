@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 
-import FileIcon from "../../../../icons/file.svg";
-import File from "../../../../Models/File";
+import FileIcon from "../../../../../icons/file.svg";
+import File from "../../../../../Models/File";
 import "./FileComponent.css";
 
 export class FileComponent extends Component<FileComponentProps> {

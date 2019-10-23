@@ -1,8 +1,10 @@
-div.file-explorer-sidebar {
+div.sidebar {
     min-width: 320px;
 
     overflow-x: auto;
     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
     background-color: var(--darkBackgroundColor);
 
@@ -11,13 +13,13 @@ div.file-explorer-sidebar {
 }
 
 @media (max-width: 640px) {
-    div.file-explorer-sidebar {
+    div.sidebar {
         margin-left: -100vw;
         min-width: 100vw;
         max-width: 100vw;
     }
 
-    div.file-explorer-sidebar.mobile-menu-open {
+    div.sidebar.mobile-menu-open {
         margin-left: 0;
     }
 }

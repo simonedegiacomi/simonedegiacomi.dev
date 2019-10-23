@@ -1,11 +1,11 @@
 import React, {Component, MouseEventHandler} from "react";
 import classNames from 'classnames';
 
-import File from "../../../../Models/File";
-import Folder from "../../../../Models/Folder";
+import File from "../../../../../Models/File";
+import Folder from "../../../../../Models/Folder";
 import {FileComponent} from "./FileComponent";
 import "./FolderComponent.css";
-import FolderToggleTriggerIcon from "../../../../icons/folder-arrow.svg";
+import FolderToggleTriggerIcon from "../../../../../icons/folder-arrow.svg";
 
 export class FolderComponent extends Component<FolderComponentProps, FolderComponentState> {
 
