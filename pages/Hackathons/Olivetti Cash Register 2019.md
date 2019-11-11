@@ -7,11 +7,11 @@ Throughout the 48 hrs of hackathon we had available two types of mentors: techni
 
 ## Our idea
 
-Our idea consisted in a system that would allow merchants to generate an e-commerce website from her/his new Olivetti Cash Register. Downloading the Olivetti Social Manager App from the Olivetti Store, the merchant would be able to express the style and the story of his/her shop through a website easily accessible from every device.
+Our idea consisted in a system that allows merchants to generate an e-commerce website from her/his new Olivetti Cash Register. Downloading the Olivetti Social Manager App from the Olivetti Store, the merchant is able to express the style and the story of his/her shop through a website easily accessible from every device.
 
-Products would be automatically imported from the Cash Register using the Olivetti APIs (provided from one of the default applications).
+Products are automatically imported from the Cash Register using the Olivetti APIs (provided from one of the default applications).
 
-When it's time to publish a new offer, the merchant would select the product, insert a message and publish the offer on multiple social channel in a single shot: Facebook posts, Instagram photos or push notification for the users that already have opened the webapp on their phone. Moreover, the platform would allow the merchant to publish Ads using Facebook Ads, Instagram Ads and similar services.
+When it's time to publish a new offer, the merchant selects the product, inserts a message and publishes the offer on multiple social channel in a single shot: Facebook posts, Instagram photos or push notifications for users that already have opened the webapp on their phones. Moreover, the platform allows the merchant to publish Ads using Facebook Ads, Instagram Ads and similar services.
 
 ## What we implemented
 
