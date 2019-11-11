@@ -7,18 +7,18 @@ import "./Contacts.css";
 
 export default () => (
     <p className="contacts">
-        <a href="https://github.com/simonedegiacomi" target="_blank">
-            <img src={githubIcon} className="contact-icon"/>
+        <a href="https://github.com/simonedegiacomi" target="_blank" rel="noopener noreferrer" >
+            <img src={githubIcon} className="contact-icon" alt="GitHub icon"/>
             Github
         </a><br/>
-        <a href="https://t.me/simonedegiacomi" target="_blank">
-            <img src={telegramIcon} className="contact-icon"/>
+        <a href="https://t.me/simonedegiacomi" target="_blank" rel="noopener noreferrer" >
+            <img src={telegramIcon} className="contact-icon" alt="Telegram icon"/>
             Telegram
         </a><br/>
-        <a href="#" onClick={() => showEmailAddress('simonedegiacomi97', 'gmail.com')}>
-            <img src={emailIcon} className="contact-icon"/>
+        <button onClick={() => showEmailAddress('simonedegiacomi97', 'gmail.com')}>
+            <img src={emailIcon} className="contact-icon" alt="Email icon"/>
             Email
-        </a>
+        </button>
     </p>
 );
 

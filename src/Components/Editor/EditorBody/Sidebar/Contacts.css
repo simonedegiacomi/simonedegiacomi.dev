@@ -2,13 +2,19 @@ p.contacts {
     margin-left: .5rem;
 }
 
-p.contacts > a {
+p.contacts > a,
+p.contacts > button {
+	background: transparent;
+	border: none;
+	color: blue;
+	padding: 0;
     display: inline-block;
     margin-bottom: .5rem;
     text-decoration: underline;
 }
 
-p.contacts > a:last-child {
+p.contacts > a:last-child,
+p.contacts > button:last-child {
     margin-bottom: 0;
 }
 
